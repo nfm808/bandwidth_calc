@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCoffee} from '@fortawesome/free-solid-svg-icons'
 import './App.css';
 
-function App() {
+function App({ domElement }) {
+  const SpeedsAvailable = domElement.getAttribute("data-speedsAvailable").split(',').map(speed => Number(speed));
+  const [ loading, setLoading ] = useState(false);
+  const [ numberPeople, setNumberPeople ] = useState(0);
+  const [ numberDevices, setNumberDevices ] = useState(0);
+  console.log(SpeedsAvailable);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="BandwidthCalc">
+      <FontAwesomeIcon icon={faCoffee} />
     </div>
   );
 }
