@@ -1,0 +1,23 @@
+.BandwidthCalc-header {
+  display: flex;
+  height: 10vh;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.BandwidthCalc-header * {
+  padding: 0 1em 0 1em;
+}
+
+.BandwidthCalc-button-header {
+  background: none;
+  color: white;
+  border: none;
+  font-size: calc(10px + 2vmin);
+}
+
+.BandwidthCalc-button-header:hover {
+  cursor: pointer;
+  color: #f50;
+}
