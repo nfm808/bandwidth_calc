@@ -1,24 +1,73 @@
 .BandwidthCalc {
-  background-color: #1e2a39;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  box-sizing: border-box;
+	background-color: #1e2a39;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	font-size: calc(10px + 2vmin);
+	color: white;
+	box-sizing: border-box;
+}
+
+.BadwidthCalc-quiz {
+	display: flex;
+	width: 40%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.BandwidthCalc-intro h2 {
+	text-align: center;
+}
+
+.BandwidthCalc-button-container {
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+	justify-content: center;
+	align-items: center;
+	width: 25%;
+	border-radius: 4px;
+	text-align: center;
+	/* box-shadow: 5px 10px #18222e; */
+}
+
+.BandwidthCalc-button-container:hover,
+.BandwidthCalc-button-container:hover button {
+	color: white;
+}
+
+.BandwidthCalc-button {
+	background: none;
+	border: none;
+	font-size: calc(10px + 2vmin);
+	cursor: pointer;
+	color: #61dafb;
+}
+
+.BandwidthCalc-button:hover {
+	color: white;
+}
+
+.BandwidthCalc-card-image {
+	width: 100%;
+}
+
+.BandwidthCalc-card-image:hover {
+	stroke: white;
 }
 
 .App-link {
-  color: #61dafb;
+	color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
 }
