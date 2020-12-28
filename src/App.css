@@ -22,7 +22,7 @@
 	text-align: center;
 }
 
-.BandwidthCalc-button-container {
+.BandwidthCalc-button-card {
 	display: flex;
 	flex-direction: column;
 	cursor: pointer;
@@ -34,9 +34,15 @@
 	/* box-shadow: 5px 10px #18222e; */
 }
 
-.BandwidthCalc-button-container:hover,
-.BandwidthCalc-button-container:hover button {
+.BandwidthCalc-figure {
+	width: 60%;
+	cursor: pointer;
+}
+
+.BandwidthCalc-button-card:hover,
+.BandwidthCalc-button-card:hover button {
 	color: white;
+	text-decoration: underline;
 }
 
 .BandwidthCalc-button {
