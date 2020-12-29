@@ -15,33 +15,33 @@ const Quiz = [
 		img: Person,
 	},
 	{
-		category: "tv",
+		category: "computers",
 		question:
 			"How many desktop computers, laptops, cell phones does your household have?",
 		points: 10,
 		img: Person,
 	},
 	{
-		category: "devices",
+		category: "TVs",
 		question: "How many smart TVs (4k) does your household have?",
 		example: "Roku, Amazon Fire Stick, Kodi",
 		points: 25,
 	},
 	{
-		category: "gaming",
+		category: "gaming devices",
 		question: "How many gaming consoles or PCs does your household have?",
 		example: "Xbox Series X, PS5, PS4, Nintendo Switch",
 		points: 12,
 	},
 	{
-		category: "devices",
+		category: "smart devices",
 		question: "How many smart devices does your household have?",
 		example:
 			"Refrigerator, Washer/Dryer, Garage Doors, Thermostats, Home Assistant, Alexa",
 		points: 25,
 	},
 	{
-		category: "security",
+		category: "security devices",
 		question: "How many online security devices does your household have?",
 		example: "WiFi Security Cameras, Security Hub, Ring Doorbell",
 		points: 10,
@@ -108,6 +108,15 @@ function App({ domElement }) {
 	// reset calculator
 	const resetCalculator = () => {
 		setTotalSpeed(0);
+		setComputers(0);
+		setDevices(0);
+		setGaming(0);
+		setPeople(0);
+		setQuestionIndex(0);
+		setTv(0);
+		setSecurity(0);
+		setQuizActive(false);
+		setResultsActive(false);
 	};
 
 	// start quiz
@@ -115,8 +124,29 @@ function App({ domElement }) {
 		setQuizActive(true);
 	};
 
+	const sumTotalSpeed = () => {
+		let total = people + computers + tv + devices + security + gaming;
+		setTotalSpeed(total);
+		return 0;
+	};
+
 	// next question
-	const nextQuestion = () => {};
+	const nextQuestion = (e) => {
+		if (e && e.key !== "Enter") {
+		} else {
+			sumTotalSpeed();
+			let el = document.querySelector(".BandwidthCalc-input");
+			el.value = "";
+			el.focus();
+			el.scrollIntoView();
+			if (questionIndex == 5) {
+				setResultsActive(true);
+			} else {
+				let i = questionIndex + 1;
+				setQuestionIndex(i);
+			}
+		}
+	};
 
 	// previous question
 	const prevQuestion = () => {};
@@ -127,8 +157,7 @@ function App({ domElement }) {
 			{quizActive && (
 				<section className="BadwidthCalc-quiz">
 					<h2>{Quiz[questionIndex].question}</h2>
-					{Quiz[questionIndex].example && <p>{Quiz[questionIndex].example}</p>}
-					<div className="Bandwidth-card">
+					<div className="Bandwidth-quiz-button-container">
 						<figure className="BandwidthCalc-figure">
 							<img
 								className="BandwidthCalc-card-image"
@@ -136,19 +165,32 @@ function App({ domElement }) {
 								alt=""
 							/>
 						</figure>
+						<label
+							className="BandwidthCalc-label"
+							htmlFor={Quiz[questionIndex].category}
+						>
+							Enter number of {Quiz[questionIndex].category} here:
+						</label>
 						<input
 							type="number"
+							pattern="[0-9]*"
+							id={Quiz[questionIndex].category}
+							className="BandwidthCalc-input"
+							min="0"
+							onKeyDown={(e) => nextQuestion(e)}
 							onChange={(e) =>
 								setPoints(Number(e.target.value), Quiz[questionIndex].points)
 							}
 						/>
-					</div>
-					<div className="Bandwidth-quiz-button-container">
-						<button className="BandwidthCalc-button" onClick={prevQuestion}>
-							Previous
-						</button>
+						{Quiz[questionIndex].example && (
+							<p>Examples: {Quiz[questionIndex].example}</p>
+						)}
 
-						<button className="BandwidthCalc-button" onClick={nextQuestion}>
+						<button
+							className="BandwidthCalc-button"
+							onClick={() => nextQuestion()}
+							onKeyDown={(e) => nextQuestion(e)}
+						>
 							Next
 						</button>
 					</div>
