@@ -27,7 +27,7 @@
 
 .BandwidthCalc-input {
 	width: 9ch;
-	line-height: 6ch;
+	line-height: 5ch;
 	padding: 0.5em;
 	margin-bottom: 1.5em;
 	text-align: center;
@@ -68,9 +68,9 @@
 	color: #61dafb;
 }
 
-.BandwidthCalc-button:hover {
+/* .BandwidthCalc-button:hover {
 	color: white;
-}
+} */
 
 .BandwidthCalc-card-image {
 	width: 100%;

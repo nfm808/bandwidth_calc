@@ -29,7 +29,7 @@ const Quiz = [
 	},
 	{
 		category: "gaming devices",
-		question: "How many gaming consoles or PCs does your household have?",
+		question: "How many gaming consoles and PCs does your household have?",
 		example: "Xbox Series X, PS5, PS4, Nintendo Switch",
 		points: 12,
 	},
@@ -156,6 +156,7 @@ function App({ domElement }) {
 			{!quizActive && !resultsActive && <QuizStart startQuiz={startQuiz} />}
 			{quizActive && (
 				<section className="BadwidthCalc-quiz">
+					<p>Question: {questionIndex + 1} / 6</p>
 					<h2>{Quiz[questionIndex].question}</h2>
 					<div className="Bandwidth-quiz-button-container">
 						<figure className="BandwidthCalc-figure">
