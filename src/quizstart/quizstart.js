@@ -1,5 +1,6 @@
 import React from "react";
-import { ReactComponent as CheckLogo } from "../assets/check.svg";
+import CheckLogo from "../assets/check.svg";
+import "./quizstart.css";
 
 function QuizStart({ startQuiz }) {
 	return (
@@ -11,8 +12,8 @@ function QuizStart({ startQuiz }) {
 			</p>
 
 			<div onClick={startQuiz} className="BandwidthCalc-button-card">
-				<figure className="BandwidthCalc-figure">
-					<CheckLogo className="BandwidthCalc-card-image" />
+				<figure className="BandwidthCalc-quizstart-figure">
+					<img src={CheckLogo} className="BandwidthCalc-card-image" alt="" />
 				</figure>
 				<button className="BandwidthCalc-button">Start</button>
 			</div>

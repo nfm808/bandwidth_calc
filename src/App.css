@@ -6,7 +6,7 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	font-size: calc(10px + 2vmin);
+	font-size: calc(1rem + 2vmin);
 	color: white;
 	box-sizing: border-box;
 }
@@ -22,14 +22,14 @@
 }
 
 .BandwidthCalc-label {
-	padding: 0.75em;
+	padding: 0.75rem;
 }
 
 .BandwidthCalc-input {
 	width: 9ch;
 	line-height: 5ch;
 	padding: 0.5em;
-	margin-bottom: 1.5em;
+	margin-bottom: 1.5rem;
 	text-align: center;
 }
 
@@ -63,7 +63,7 @@
 .BandwidthCalc-button {
 	background: none;
 	border: none;
-	font-size: calc(10px + 2vmin);
+	font-size: calc(1rem + 2vmin);
 	cursor: pointer;
 	color: #61dafb;
 }
@@ -99,4 +99,16 @@
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+.BandwidthCalc-footer {
+	width: 100%;
+	height: 5%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.BandwidthCalc-logo {
+	width: 25%;
 }

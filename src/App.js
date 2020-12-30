@@ -4,6 +4,7 @@ import QuizStart from "./quizstart/quizstart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 import CheckLogo from "./assets/check.svg";
+import { ReactComponent as CvecLogo } from "./assets/cvec.svg";
 import Person from "./assets/people.svg";
 import "./App.css";
 
@@ -136,9 +137,10 @@ function App({ domElement }) {
 		} else {
 			sumTotalSpeed();
 			let el = document.querySelector(".BandwidthCalc-input");
+			let h = document.querySelector(".BandwidthCalc-h2");
+			h.scrollTo();
 			el.value = "";
 			el.focus();
-			el.scrollIntoView();
 			if (questionIndex == 5) {
 				setResultsActive(true);
 			} else {
@@ -157,15 +159,8 @@ function App({ domElement }) {
 			{quizActive && (
 				<section className="BadwidthCalc-quiz">
 					<p>Question: {questionIndex + 1} / 6</p>
-					<h2>{Quiz[questionIndex].question}</h2>
+					<h2 className="BandwidthCalc-h2">{Quiz[questionIndex].question}</h2>
 					<div className="Bandwidth-quiz-button-container">
-						<figure className="BandwidthCalc-figure">
-							<img
-								className="BandwidthCalc-card-image"
-								src={Quiz[questionIndex].img}
-								alt=""
-							/>
-						</figure>
 						<label
 							className="BandwidthCalc-label"
 							htmlFor={Quiz[questionIndex].category}
@@ -186,7 +181,13 @@ function App({ domElement }) {
 						{Quiz[questionIndex].example && (
 							<p>Examples: {Quiz[questionIndex].example}</p>
 						)}
-
+						{/* <figure className="BandwidthCalc-figure">
+							<img
+								className="BandwidthCalc-card-image"
+								src={Quiz[questionIndex].img}
+								alt=""
+							/>
+						</figure> */}
 						<button
 							className="BandwidthCalc-button"
 							onClick={() => nextQuestion()}
@@ -197,7 +198,9 @@ function App({ domElement }) {
 					</div>
 				</section>
 			)}
-			<footer></footer>
+			<footer className="BandwidthCalc-footer">
+				<p>Bandwidth Calculator</p>
+			</footer>
 		</div>
 	);
 }
