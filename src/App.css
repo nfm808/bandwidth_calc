@@ -11,10 +11,10 @@
 	box-sizing: border-box;
 }
 
-.BadwidthCalc-quiz {
+.BandwidthCalc-quiz {
 	display: flex;
 	width: 85%;
-	max-width: 500px;
+	max-width: 600px;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
@@ -23,6 +23,7 @@
 
 .BandwidthCalc-label {
 	padding: 0.75rem;
+	font-size: small;
 }
 
 .BandwidthCalc-input {
@@ -31,6 +32,10 @@
 	padding: 0.5em;
 	margin-bottom: 1.5rem;
 	text-align: center;
+}
+
+.BandwidthCalc-intro p {
+	font-size: smaller;
 }
 
 .BandwidthCalc-intro h2 {
@@ -66,6 +71,7 @@
 	font-size: calc(1rem + 2vmin);
 	cursor: pointer;
 	color: #61dafb;
+	padding: 1rem;
 }
 
 /* .BandwidthCalc-button:hover {
@@ -105,10 +111,29 @@
 	width: 100%;
 	height: 5%;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.BandwidthCalc-logo-container {
+	width: 33%;
+	max-width: 300px;
+	display: flex;
+	justify-content: center;
 	align-items: center;
 }
 
 .BandwidthCalc-logo {
-	width: 25%;
+	width: 66%;
+}
+
+.BandwidthCalc-questionNumber {
+	font-size: smaller;
+}
+
+@media screen and (min-width: 700px) {
+	.BandwidthCalc-footer,
+	.BandwidthCalc-header {
+		justify-content: space-evenly;
+	}
 }

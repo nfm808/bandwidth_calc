@@ -2,18 +2,23 @@
 	display: flex;
 	height: 10vh;
 	width: 100%;
-	justify-content: space-evenly;
+	justify-content: space-between;
 	align-items: center;
 }
 
-.BandwidthCalc-button-header {
+.BandwidthCalc-header p {
+	padding-right: 1rem;
+}
+
+.BandwidthCalc-button-footer {
 	background: none;
 	color: white;
 	border: none;
 	font-size: calc(10px + 2vmin);
+	padding: 1rem;
 }
 
-.BandwidthCalc-button-header:hover {
+.BandwidthCalc-button-footer:hover {
 	cursor: pointer;
 	color: #f50;
 }

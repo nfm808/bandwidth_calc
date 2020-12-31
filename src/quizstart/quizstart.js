@@ -4,8 +4,8 @@ import "./quizstart.css";
 
 function QuizStart({ startQuiz }) {
 	return (
-		<section className="BadwidthCalc-quiz BandwidthCalc-intro">
-			<h2>Free yourself from ever waiting on your internet connection!</h2>
+		<section className="BandwidthCalc-quiz BandwidthCalc-intro">
+			<h2>Find your household's optimum bandwidth!</h2>
 			<p>
 				Answer the following questions to calculate the minimum internet
 				bandwidth speed your home needs.

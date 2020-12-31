@@ -1,19 +1,18 @@
 import React from "react";
-import { ReactComponent as CvecLogo } from "../assets/cvec.svg";
+import CvecLogo from "../assets/cvec.svg";
 import "./header.css";
 
-function Header({ totalSpeed, resetCalculator }) {
+function Header({ totalSpeed, resultsActive }) {
 	return (
 		<header className="BandwidthCalc-header">
-			<button
-				onClick={() => resetCalculator()}
-				className="BandwidthCalc-button-header"
-			>
-				Reset
-			</button>
-			<CvecLogo className="BandwidthCalc-logo" />
-
-			<p>{totalSpeed} Mbps</p>
+			<div className="BandwidthCalc-logo-container">
+				<img
+					src={CvecLogo}
+					className="BandwidthCalc-logo"
+					alt="CVEC Fiber Logo"
+				/>
+			</div>
+			{!resultsActive && <p>{totalSpeed} Mbps</p>}
 		</header>
 	);
 }

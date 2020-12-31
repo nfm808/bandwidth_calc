@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "./header/header";
 import QuizStart from "./quizstart/quizstart";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-import CheckLogo from "./assets/check.svg";
-import { ReactComponent as CvecLogo } from "./assets/cvec.svg";
 import Person from "./assets/people.svg";
 import "./App.css";
+import Results from "./results/results";
 
 const Quiz = [
 	{
@@ -18,13 +15,14 @@ const Quiz = [
 	{
 		category: "computers",
 		question:
-			"How many desktop computers, laptops, cell phones does your household have?",
+			"How many desktops, laptops, tablets, and cell phones does your household have?",
 		points: 10,
 		img: Person,
 	},
 	{
 		category: "TVs",
-		question: "How many smart TVs (4k) does your household have?",
+		question:
+			"How many smart TVs and streaming devices does your household have?",
 		example: "Roku, Amazon Fire Stick, Kodi",
 		points: 25,
 	},
@@ -54,7 +52,6 @@ function App({ domElement }) {
 		.getAttribute("data-speedsAvailable")
 		.split(",")
 		.map((speed) => Number(speed));
-	const [loading, setLoading] = useState(false);
 	const [totalSpeed, setTotalSpeed] = useState(0);
 	const [quizActive, setQuizActive] = useState(false);
 	const [resultsActive, setResultsActive] = useState(false);
@@ -69,37 +66,24 @@ function App({ domElement }) {
 	// add points (Mbps)
 	const setPoints = (int, points) => {
 		let total = int * points;
-		console.log("total: ", total);
 		switch (questionIndex) {
 			case 0:
-				console.log("people");
 				setPeople(total);
-				console.log("people: ", people);
 				break;
 			case 1:
-				console.log("computers");
 				setComputers(total);
-				console.log("computers: ", computers);
 				break;
 			case 2:
-				console.log("tv");
 				setTv(total);
-				console.log("tv: ", tv);
 				break;
 			case 3:
-				console.log("gaming");
 				setGaming(total);
-				console.log("gaming: ", gaming);
 				break;
 			case 4:
-				console.log("devicecs");
 				setDevices(total);
-				console.log("devices: ", devices);
 				break;
 			case 5:
-				console.log("security");
 				setSecurity(total);
-				console.log("security: ", security);
 				break;
 			default:
 				break;
@@ -141,7 +125,8 @@ function App({ domElement }) {
 			h.scrollTo();
 			el.value = "";
 			el.focus();
-			if (questionIndex == 5) {
+			if (questionIndex === 5) {
+				setQuizActive(false);
 				setResultsActive(true);
 			} else {
 				let i = questionIndex + 1;
@@ -150,15 +135,19 @@ function App({ domElement }) {
 		}
 	};
 
-	// previous question
-	const prevQuestion = () => {};
 	return (
 		<div className="BandwidthCalc">
-			<Header totalSpeed={totalSpeed} resetCalculator={resetCalculator} />
+			<Header
+				totalSpeed={totalSpeed}
+				resetCalculator={resetCalculator}
+				resultsActive={resultsActive}
+			/>
 			{!quizActive && !resultsActive && <QuizStart startQuiz={startQuiz} />}
 			{quizActive && (
-				<section className="BadwidthCalc-quiz">
-					<p>Question: {questionIndex + 1} / 6</p>
+				<section className="BandwidthCalc-quiz">
+					<p className="BandwidthCalc-questionNumber">
+						Question: {questionIndex + 1} / 6
+					</p>
 					<h2 className="BandwidthCalc-h2">{Quiz[questionIndex].question}</h2>
 					<div className="Bandwidth-quiz-button-container">
 						<label
@@ -179,28 +168,35 @@ function App({ domElement }) {
 							}
 						/>
 						{Quiz[questionIndex].example && (
-							<p>Examples: {Quiz[questionIndex].example}</p>
+							<p className="BandwidthCalc-questionNumber">
+								Examples: {Quiz[questionIndex].example}
+							</p>
 						)}
-						{/* <figure className="BandwidthCalc-figure">
-							<img
-								className="BandwidthCalc-card-image"
-								src={Quiz[questionIndex].img}
-								alt=""
-							/>
-						</figure> */}
+					</div>
+				</section>
+			)}
+			{resultsActive && <Results totalSpeed={totalSpeed} />}
+			{!resultsActive && !quizActive ? (
+				<footer className="BandwidthCalc-footer"></footer>
+			) : (
+				<footer className="BandwidthCalc-footer">
+					<button
+						onClick={() => resetCalculator()}
+						className="BandwidthCalc-button"
+					>
+						Reset
+					</button>
+					{!resultsActive && (
 						<button
 							className="BandwidthCalc-button"
 							onClick={() => nextQuestion()}
 							onKeyDown={(e) => nextQuestion(e)}
 						>
-							Next
+							{questionIndex === 5 ? "Get Results" : "Next"}
 						</button>
-					</div>
-				</section>
+					)}
+				</footer>
 			)}
-			<footer className="BandwidthCalc-footer">
-				<p>Bandwidth Calculator</p>
-			</footer>
 		</div>
 	);
 }
