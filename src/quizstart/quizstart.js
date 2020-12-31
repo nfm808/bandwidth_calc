@@ -7,8 +7,8 @@ function QuizStart({ startQuiz }) {
 		<section className="BandwidthCalc-quiz BandwidthCalc-intro">
 			<h2>Find your household's optimum bandwidth!</h2>
 			<p>
-				Answer the following questions to calculate the minimum internet
-				bandwidth speed your home needs.
+				Answer the following questions to calculate the minimum internet speed
+				your home needs.
 			</p>
 
 			<div onClick={startQuiz} className="BandwidthCalc-button-card">

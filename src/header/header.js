@@ -5,14 +5,18 @@ import "./header.css";
 function Header({ totalSpeed, resultsActive }) {
 	return (
 		<header className="BandwidthCalc-header">
-			<div className="BandwidthCalc-logo-container">
-				<img
-					src={CvecLogo}
-					className="BandwidthCalc-logo"
-					alt="CVEC Fiber Logo"
-				/>
-			</div>
-			{!resultsActive && <p>{totalSpeed} Mbps</p>}
+			{!resultsActive && (
+				<>
+					<div className="BandwidthCalc-logo-container">
+						<img
+							src={CvecLogo}
+							className="BandwidthCalc-logo"
+							alt="CVEC Fiber Logo"
+						/>
+					</div>
+					<p>{totalSpeed} Mbps</p>
+				</>
+			)}
 		</header>
 	);
 }

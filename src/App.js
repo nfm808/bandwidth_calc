@@ -121,10 +121,9 @@ function App({ domElement }) {
 		} else {
 			sumTotalSpeed();
 			let el = document.querySelector(".BandwidthCalc-input");
-			let h = document.querySelector(".BandwidthCalc-h2");
-			h.scrollTo();
 			el.value = "";
 			el.focus();
+
 			if (questionIndex === 5) {
 				setQuizActive(false);
 				setResultsActive(true);
@@ -175,7 +174,9 @@ function App({ domElement }) {
 					</div>
 				</section>
 			)}
-			{resultsActive && <Results totalSpeed={totalSpeed} />}
+			{resultsActive && (
+				<Results totalSpeed={totalSpeed} resultsActive={resultsActive} />
+			)}
 			{!resultsActive && !quizActive ? (
 				<footer className="BandwidthCalc-footer"></footer>
 			) : (
